@@ -258,8 +258,29 @@ WORD WINAPI ValidateThaiStr16( SEGPTR lpSrc, SEGPTR lpDest, WORD nCount, BYTE cC
  */
 WORD WINAPI CountThaiCharType16( SEGPTR lpString, WORD nCount, WORD Ntype )
 {
-    FIXME("(%p, %u, %04x), stub\n", (void*)&lpString, nCount, Ntype);
-    return 0;
+    int i;
+    WORD count = 0;
+    char *ptr = MapSL(lpString);
+    int lenght = strlen(ptr);
+
+    TRACE("(\"%s\", %u, %04x)\n", ptr, nCount, Ntype);
+
+    for(i = 0; i < nCount; i++)
+    {
+        if( ( nCount > lenght ) && ( *ptr == '\0' ) )
+            break;
+
+        if( ThaiCharType16( *ptr ) & Ntype )
+        {
+            count++;
+        }
+
+        ptr++;
+    }
+
+    TRACE("count %d\n", count);
+
+    return count;
 }
 
 
