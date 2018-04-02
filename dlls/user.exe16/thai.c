@@ -346,7 +346,7 @@ SEGPTR WINAPI lstrDayName16( WORD nDay, SEGPTR lpDest, WORD nFormat )
             if(iThaiDate)
                 /* load setting from WIN.INI
                 * Default is "dddd'ที่ 'd' 'MMMM' พ.ศ. 'yyyy" */
-                iLenght = GetProfileStringA( "Thai", "sLongDate", "dddd'\xB8\xD5\xE8 'd' 'MMMM' \xBE.\xC8. 'yyyy",
+                iLenght = GetProfileStringA( "Thai", "sLongDate", "dddd'\xB7\xD5\xE8 'd' 'MMMM' \xBE.\xC8. 'yyyy",
                                             (LPSTR)szDateForm, sizeof(szDateForm) );
             else
                 iLenght = GetProfileStringA( "intl", "sLongDate", "dd MMMM yyyy",
@@ -466,7 +466,7 @@ SEGPTR WINAPI lstrMonthName16( WORD nMonth, SEGPTR lpDest, WORD nFormat )
             if(iThaiDate)
                 /* load setting from WIN.INI
                 * Default is "dddd'ที่ 'd' 'MMMM' พ.ศ. 'yyyy" */
-                iLenght = GetProfileStringA( "Thai", "sLongDate", "dddd'\xB8\xD5\xE8 'd' 'MMMM' \xBE.\xC8. 'yyyy",
+                iLenght = GetProfileStringA( "Thai", "sLongDate", "dddd'\xB7\xD5\xE8 'd' 'MMMM' \xBE.\xC8. 'yyyy",
                                             (LPSTR)szDateForm, sizeof(szDateForm) );
             else
                 iLenght = GetProfileStringA( "intl", "sLongDate", "dd MMMM yyyy",
@@ -544,7 +544,7 @@ SEGPTR WINAPI lstrYearNumber16( WORD nYear, SEGPTR lpDest, WORD nFormat )
             if(iThaiDate)
                 /* load setting from WIN.INI
                 * Default is "dddd'ที่ 'd' 'MMMM' พ.ศ. 'yyyy" */
-                iLenght = GetProfileStringA( "Thai", "sLongDate", "dddd'\xB8\xD5\xE8 'd' 'MMMM' \xBE.\xC8. 'yyyy",
+                iLenght = GetProfileStringA( "Thai", "sLongDate", "dddd'\xB7\xD5\xE8 'd' 'MMMM' \xBE.\xC8. 'yyyy",
                                             (LPSTR)szDateForm, sizeof(szDateForm) );
             else
                 iLenght = GetProfileStringA( "intl", "sLongDate", "dd MMMM yyyy",
