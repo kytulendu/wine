@@ -30,13 +30,16 @@
 
 WINE_DEFAULT_DEBUG_CHANNEL(user);
 
+/* Thai API */
+static WORD THAI_Interface = 0;         /* Thai API interface flags */
+
 /***********************************************************************
  *           GetTaskInterface (USER.474)
  */
 WORD WINAPI GetTaskInterface16( HTASK16 hTask )
 {
-    FIXME("(%p) stub\n", (void*)&hTask);
-    return 0;
+    FIXME("(%p) semi-stub\n", (void*)&hTask);
+    return THAI_Interface;
 }
 
 
@@ -314,6 +317,7 @@ BOOL16 WINAPI SetThaiKbdSeqCheck16( BOOL16 fCheck )
  */
 WORD WINAPI SetTaskInterface16( HTASK16 hTask, WORD dwFlags )
 {
-    FIXME("(%p, %04x), stub\n", (void*)&hTask, dwFlags);
-    return 0;
+    FIXME("(%p, %04x), semi-stub\n", (void*)&hTask, dwFlags);
+    THAI_Interface = dwFlags;
+    return 1;
 }

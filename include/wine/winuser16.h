@@ -584,7 +584,15 @@ typedef struct tagCOPYDATASTRUCT16 {
                       TC_ABOVEDIACRITIC2|TC_BELOWDIACRITIC|TC_TONEMARK)
 #define TC_NONZEROWIDTH  (~(TC_ZEROWIDTH))
 
-/* Thai character */
+/* Thai bilingual flags */
+#define STANDARD_INTERFACE       0
+#define THAI_INTERFACE           1
+#define THAI_MENU_ACCESS        16
+
+#define lGetWindowTask(hwnd)  ( (hwnd==0) ? GetCurrentTask() :\
+                                GetWindowTask(hwnd) )
+
+/* Thai characters */
 /* TODO: change the value to hex? */
 #define KOKAI           161  /* ก  A1 */
 #define KHOKHAI         162  /* ข  A2 */
