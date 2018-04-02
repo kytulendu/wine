@@ -12,6 +12,15 @@
 12  stub MAPVIRTUALKEYEX
 13  stub NEWTABLEEX
 14  stub __EXPORTEDSTUB
+# Thai API
+15  pascal SetThaiKbdLayout(s_word) SetThaiKbdLayout16
+16  pascal -ret16 GetThaiKbdLayout() GetThaiKbdLayout16
+17  pascal lstrKbdThaiToEng(segptr segptr word s_word) lstrKbdThaiToEng16
+18  pascal lstrKbdEngToThai(segptr segptr word s_word) lstrKbdEngToThai16
+19  pascal lstrNumThaiToArabic(segptr segptr word) lstrNumThaiToArabic16
+20  pascal lstrNumArabicToThai(segptr segptr word) lstrNumArabicToThai16
+21  pascal SetBahtKey(word) SetBahtKey16
+23  pascal SetThaiCapsLockEffect(word) SetThaiCapsLockEffect16
 
 100	pascal	ScreenSwitchEnable(word) ScreenSwitchEnable16
 #126	pascal	GetTableSeg
