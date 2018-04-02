@@ -2014,20 +2014,23 @@ BOOL16 WINAPI DragDetect16( HWND16 hwnd, POINT16 pt )
 /**************************************************************************
  *              SetScrollInfo   (USER.475)
  */
+/*
 INT16 WINAPI SetScrollInfo16( HWND16 hwnd, INT16 nBar, const SCROLLINFO *info, BOOL16 redraw )
 {
     return SetScrollInfo( WIN_Handle32(hwnd), nBar, info, redraw );
 }
+*/
 
 
 /**************************************************************************
  *              GetScrollInfo   (USER.476)
  */
+/*
 BOOL16 WINAPI GetScrollInfo16( HWND16 hwnd, INT16 nBar, LPSCROLLINFO info )
 {
     return GetScrollInfo( WIN_Handle32(hwnd), nBar, info );
 }
-
+*/
 
 /**************************************************************************
  *              EnableScrollBar   (USER.482)

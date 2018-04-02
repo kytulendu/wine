@@ -430,9 +430,14 @@
 471 pascal -ret16 lstrcmpi(str str) lstrcmpiA
 472 pascal   AnsiNext(segptr) AnsiNext16
 473 pascal   AnsiPrev(str segptr) AnsiPrev16
-475 pascal -ret16 SetScrollInfo(word s_word ptr word) SetScrollInfo16
-476 pascal -ret16 GetScrollInfo(word s_word ptr) GetScrollInfo16
-477 pascal -ret16 GetKeyboardLayoutName(ptr) GetKeyboardLayoutName16
+# Thai API
+474 pascal -ret16 GetTaskInterface(word) GetTaskInterface16
+475 pascal -ret16 GetKeyboardLanguage() GetKeyboardLanguage16           # Conflicts with SetScrollInfo
+476 pascal -ret16 SetKeyboardLanguage(s_word) SetKeyboardLanguage16     # Conflicts with GetScrollInfo
+477 pascal -ret16 SetLanguageToggleKey(s_word) SetLanguageToggleKey16   # Conflicts with GetKeyboardLayoutName
+#475 pascal -ret16 SetScrollInfo(word s_word ptr word) SetScrollInfo16
+#476 pascal -ret16 GetScrollInfo(word s_word ptr) GetScrollInfo16
+#477 pascal -ret16 GetKeyboardLayoutName(ptr) GetKeyboardLayoutName16
 478 stub LoadKeyboardLayout
 479 stub MenuItemFromPoint
 480 stub GetUserLocalObjType
@@ -440,12 +445,27 @@
 482 pascal -ret16 EnableScrollBar(word word word) EnableScrollBar16
 483 pascal -ret16 SystemParametersInfo(word word ptr word) SystemParametersInfo16
 #484 __GP
+# Thai API
+485 pascal   FindThaiWordBreak(segptr word segptr word) FindThaiWordBreak16
+486 pascal -ret16 ThaiCharType(word) ThaiCharType16
+487 pascal -ret16 IsInvalidKbdSeqBeep() IsInvalidKbdSeqBeep16
+488 pascal -ret16 SetInvalidKbdSeqBeep(word) SetInvalidKbdSeqBeep16
+489 pascal -ret16 IsThaiCharCombinable(word word) IsThaiCharCombinable16
+490 pascal   ThaiStrValid(segptr word) ThaiStrValid16
+491 pascal -ret16 ValidateThaiStr(segptr segptr word word) ValidateThaiStr16
+492 pascal -ret16 CountThaiCharType(segptr word word) CountThaiCharType16
+493 pascal   lstrDayName(word segptr word) lstrDayName16
+494 pascal   lstrMonthName(word segptr word) lstrMonthName16
+495 pascal   lstrYearNumber(word segptr word) lstrYearNumber16
+496 pascal -ret16 IsThaiKbdSeqCheck() IsThaiKbdSeqCheck16
+497 pascal -ret16 SetThaiKbdSeqCheck(word) SetThaiKbdSeqCheck16
+498 pascal -ret16 SetTaskInterface(word word) SetTaskInterface16
 # Stubs for Hebrew version
-489 pascal -ret16 USER_489() stub_USER_489
-490 pascal -ret16 USER_490() stub_USER_490
-492 pascal -ret16 USER_492() stub_USER_492
-496 pascal -ret16 USER_496() stub_USER_496
-498 stub BEAR498
+#489 pascal -ret16 USER_489() stub_USER_489
+#490 pascal -ret16 USER_490() stub_USER_490
+#492 pascal -ret16 USER_492() stub_USER_492
+#496 pascal -ret16 USER_496() stub_USER_496
+#498 stub BEAR498
 499 pascal -ret16 WNetErrorText(word ptr word) WNetErrorText16
 500 stub FARCALLNETDRIVER 			# Undocumented Windows
 501 pascal -ret16 WNetOpenJob(ptr ptr word ptr)  WNetOpenJob16
