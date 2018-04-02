@@ -592,6 +592,12 @@ typedef struct tagCOPYDATASTRUCT16 {
 #define lGetWindowTask(hwnd)  ( (hwnd==0) ? GetCurrentTask() :\
                                 GetWindowTask(hwnd) )
 
+/* Date formats */
+#define TS_LONG             0x0004
+#define TS_SHORT            0x000C
+#define TS_ENG              0x0001
+#define TS_THAI             0x0003
+
 /* Thai characters */
 /* TODO: change the value to hex? */
 #define KOKAI           161  /* ก  A1 */
