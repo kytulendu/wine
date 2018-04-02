@@ -85,8 +85,117 @@ void WINAPI FindThaiWordBreak16( SEGPTR lpString, WORD nCount, SEGPTR lpWordBrea
  */
 WORD WINAPI ThaiCharType16( BYTE cCh )
 {
-    FIXME("(%04x), stub\n", cCh);
-    return 0;
+    /* TC_CONTROL 0x00-0x1F, 0x7F-0x84, 0x86-0x90, 0x98-0x9F, 0xFF */
+    if (( cCh <= 0x1F ) ||
+        (( cCh >= 0x7F ) && ( cCh <= 0x84 )) ||
+        (( cCh >= 0x86 ) && ( cCh <= 0x90 )) ||
+        ( cCh == 0xFF ))
+        return TC_CONTROL;
+
+    /* TC_SYMBOL 0x20-0x2F, 0x3A-0x40, 0x5B-0x60, 0x7B-0x7E, 0x85, 0x91-0x97 */
+    if ((( cCh >= 0x20 ) && ( cCh <= 0x2F )) ||
+        (( cCh >= 0x3A ) && ( cCh <= 0x40 )) ||
+        (( cCh >= 0x5B ) && ( cCh <= 0x60 )) ||
+        (( cCh >= 0x7B ) && ( cCh <= 0x7E )) ||
+        ( cCh == 0x85 ) ||
+        (( cCh >= 0x91 ) && ( cCh <= 0x97 )))
+        return TC_SYMBOL;
+
+    if (isdigit(cCh))
+        return TC_NUMERAL;
+
+    if (isupper(cCh))
+        return TC_UPPERCASE;
+
+    if (islower(cCh))
+        return TC_LOWERCASE;
+
+    /* Test for Thai character */
+    switch (cCh)
+    {
+        /* 0xA1-0xC3, 0xC5, 0xC7-0xCE */
+        case KOKAI:         case KHOKHAI:       case KHOKHUAT:  case KHOKHWAI:
+        case KHOKHON:       case KHORAKHANG:    case NGONGU:    case CHOCHAN:
+        case CHOCHING:      case CHOCHANG:      case SOSO:      case CHOCHOE:
+        case YOYING:        case DOCHADA:       case TOPATAK:   case THOTHAN:
+        case THONANGMONTHO: case THOPHUTHAO:    case NONEN:     case DODEK:
+        case TOTAO:         case THOTHUNG:      case THOTHAHAN: case THOTHONG:
+        case NONU:          case BOBAIMAI:      case POPLA:     case PHOPHUNG:
+        case FOFA:          case PHOPHAN:       case FOFAN:     case PHOSAMPHAO:
+        case MOMA:          case YOYAK:         case RORUA:
+        case LOLING:
+        case WOWAEN:        case SOSALA:        case SORUSI:    case SOSUA:
+        case HOHIP:         case LOCHULA:       case OANG:      case HONOKHUK:
+            return TC_CONSONANT;
+
+        /* 0xCF, 0xDB-0xDF, 0xEF, 0xFA-0xFE */
+        case PAIYANNOI:     case 0xDB:          case 0xDE:      case BAHT:
+        case MAIYAMOK:      case FONGMAN:       case ANGKHANKHU:case KHOMUT:
+        case 0xFC:          case 0xFE:
+            return TC_THAISYMBOL;
+
+        /* 0xE0-0xE4 */
+        case SARA_E:        case SARA_AE:       case SARA_O:    case MAIMUAN:
+        case MAIMALAI:
+            return TC_LEADVOWEL;
+
+        /* 0xC4, 0xC6, 0xD0, 0xD2, 0xE5 */
+        case RU:            case LU:            case SARA_A:    case SARA_AA:
+        case LAKKHANGYAO:
+            return TC_FOLLOWVOWEL;
+
+        /* 0xD1, 0xD4-0xD7 */
+        case MAIHUNAKAT:    case SARA_I:        case SARA_II:   case SARA_UE:
+        case SARA_UEE:
+            return TC_ABOVEVOWEL;
+
+        /* 0xD8, 0xD9 */
+        case SARA_U:        case SARA_UU:
+            return TC_BELOWVOWEL;
+
+        /* 0xD3, 0xE7, 0xED, 0xEE */
+        case MAITAIKHU:     case NIKHAHIT:      case YAMAKKAN:
+            return TC_ABOVEDIACRITIC1;
+
+        /* 0xEC */
+        case THANTHAKHAT:
+            return TC_ABOVEDIACRITIC2;
+
+        /* 0xDA */
+        case PHINTHU:
+            return TC_BELOWDIACRITIC;
+
+        /* 0xE7, 0xED, 0xEE */
+        case MAIEK:         case MAITHO:        case MAITRI:    case MAICHATTAWA:
+            return TC_TONEMARK;
+
+        /* 0xF0-0xF9 */
+        case THAIZERO:
+        case THAIONE:
+        case THAITWO:
+        case THAITHREE:
+        case THAIFOUR:
+        case THAIFIVE:
+        case THAISIX:
+        case THAISEVEN:
+        case THAIEIGHT:
+        case THAININE:
+            return TC_THAINUMERAL;
+
+        /* According to the Windows 3.1 Thai Edition SDK document.
+         * Sara Am is TC_FOLLOWVOWEL, but on Windows 3.1 Thai Edition it also TC_ABOVEDIACRITIC1 */
+        case SARA_AM:
+            return TC_FOLLOWVOWEL | TC_ABOVEDIACRITIC1;
+
+        /* On Windows 3.1 Thai Edition, These character are TC_THAISYMBOL */
+        case 0xA0:
+        case 0xDC:
+        case 0xDD:
+        case 0xFD:
+            return TC_THAISYMBOL;
+    }
+
+    return 1;
 }
 
 

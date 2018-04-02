@@ -563,6 +563,117 @@ typedef struct tagCOPYDATASTRUCT16 {
 #define CN_TRANSMIT	0x0002
 #define CN_EVENT	0x0004
 
+/* Thai Windows API flags */
+#define TC_CONTROL          0x0001
+#define TC_SYMBOL           0x0002
+#define TC_NUMERAL          0x0004
+#define TC_UPPERCASE        0x0008
+#define TC_LOWERCASE        0x0010
+#define TC_CONSONANT        0x0020
+#define TC_THAISYMBOL       0x0040
+#define TC_LEADVOWEL        0x0080
+#define TC_FOLLOWVOWEL      0x0100
+#define TC_ABOVEVOWEL       0x0200
+#define TC_BELOWVOWEL       0x0400
+#define TC_ABOVEDIACRITIC1  0x0800
+#define TC_ABOVEDIACRITIC2  0x1000
+#define TC_BELOWDIACRITIC   0x2000
+#define TC_TONEMARK         0x4000
+#define TC_THAINUMERAL      0x8000
+#define TC_ZEROWIDTH (TC_ABOVEVOWEL|TC_BELOWVOWEL|TC_ABOVEDIACRITIC1| \
+                      TC_ABOVEDIACRITIC2|TC_BELOWDIACRITIC|TC_TONEMARK)
+#define TC_NONZEROWIDTH  (~(TC_ZEROWIDTH))
+
+/* Thai character */
+/* TODO: change the value to hex? */
+#define KOKAI           161  /* ก  A1 */
+#define KHOKHAI         162  /* ข  A2 */
+#define KHOKHUAT        163  /* ฃ  A3 */
+#define KHOKHWAI        164  /* ค  A4 */
+#define KHOKHON         165  /* ต  A5 */
+#define KHORAKHANG      166  /* ฆ  A6 */
+#define NGONGU          167  /* ง  A7 */
+#define CHOCHAN         168  /* จ  A8 */
+#define CHOCHING        169  /* ฉ  A9 */
+#define CHOCHANG        170  /* ช  AA */
+#define SOSO            171  /* ซ  AB */
+#define CHOCHOE         172  /* ฌ  AC */
+#define YOYING          173  /* ญ  AD */
+#define DOCHADA         174  /* ฎ  AE */
+#define TOPATAK         175  /* ฏ  AF */
+#define THOTHAN         176  /* ฐ  BO */
+#define THONANGMONTHO   177  /* ฒ  B1 */
+#define THOPHUTHAO      178  /* ฑ  B2 */
+#define NONEN           179  /* ณ  B3 */
+#define DODEK           180  /* ด  B4 */
+#define TOTAO           181  /* ต  B5 */
+#define THOTHUNG        182  /* ถ  B6 */
+#define THOTHAHAN       183  /* ท  B7 */
+#define THOTHONG        184  /* ธ  B8 */
+#define NONU            185  /* น  B9 */
+#define BOBAIMAI        186  /* บ  BA */
+#define POPLA           187  /* ป  BB */
+#define PHOPHUNG        188  /* ผ  BC */
+#define FOFA            189  /* ฝ  BD */
+#define PHOPHAN         190  /* พ  BE */
+#define FOFAN           191  /* ฟ  BF */
+#define PHOSAMPHAO      192  /* ภ  CO */
+#define MOMA            193  /* ม  C1 */
+#define YOYAK           194  /* ย  C2 */
+#define RORUA           195  /* ร  C3 */
+#define RU              196  /* ฤ  C4 */
+#define LOLING          197  /* ล  C5 */
+#define LU              198  /* ฦ  C6 */
+#define WOWAEN          199  /* ว  C7 */
+#define SOSALA          200  /* ศ  C8 */
+#define SORUSI          201  /* ษ  C9 */
+#define SOSUA           202  /* ส  CA */
+#define HOHIP           203  /* ห  CB */
+#define LOCHULA         204  /* ฬ  CC */
+#define OANG            205  /* อ  CD */
+#define HONOKHUK        206  /* ฮ  CE */
+#define PAIYANNOI       207  /* ฯ  CF */
+#define SARA_A          208  /* ะ  DO */
+#define MAIHUNAKAT      209  /* ั  D1 */
+#define SARA_AA         210  /* า  D2 */
+#define SARA_AM         211  /* ำ  D3 */
+#define SARA_I          212  /* ิ  D4 */
+#define SARA_II         213  /* ี  D5 */
+#define SARA_UE         214  /* ึ  D6 */
+#define SARA_UEE        215  /* ื  D7 */
+#define SARA_U          216  /* ุ  D8 */
+#define SARA_UU         217  /* ู  D9 */
+#define PHINTHU         218  /* ฺ  DA */
+#define BAHT            223  /* ฿  DF */
+#define SARA_E          224  /* เ  EO */
+#define SARA_AE         225  /* แ  E1 */
+#define SARA_O          226  /* โ  E2 */
+#define MAIMUAN         227  /* ใ  E3 */
+#define MAIMALAI        228  /* ไ  E4 */
+#define LAKKHANGYAO     229  /* ๅ  E5 */
+#define MAIYAMOK        230  /* ๆ  E6 */
+#define MAITAIKHU       231  /* ็  E7 */
+#define MAIEK           232  /* ่  E8 */
+#define MAITHO          233  /* ้  E9 */
+#define MAITRI          234  /* ๊  EA */
+#define MAICHATTAWA     235  /* ๋  EB */
+#define THANTHAKHAT     236  /* ์  EC */
+#define NIKHAHIT        237  /* ํ  ED */
+#define YAMAKKAN        238  /* ๎  EE */
+#define FONGMAN         239  /* ๏  EF */
+#define THAIZERO        240  /* ๐  FO */
+#define THAIONE         241  /* ๑  F1 */
+#define THAITWO         242  /* ๒  F2 */
+#define THAITHREE       243  /* ๓  F3 */
+#define THAIFOUR        244  /* ๔  F4 */
+#define THAIFIVE        245  /* ๕  F5 */
+#define THAISIX         246  /* ๖  F6 */
+#define THAISEVEN       247  /* ๗  F7 */
+#define THAIEIGHT       248  /* ๘  F8 */
+#define THAININE        249  /* ๙  F9 */
+#define ANGKHANKHU      250  /* ๚  FA */
+#define KHOMUT          251  /* ๛  FB */
+
 BOOL16      WINAPI CheckMenuRadioItem16(HMENU16,UINT16,UINT16,UINT16,UINT16);
 HICON16     WINAPI CopyImage16(HANDLE16,UINT16,INT16,INT16,UINT16);
 HICON16     WINAPI CreateIconFromResource16(LPBYTE,UINT16,BOOL16,DWORD);
