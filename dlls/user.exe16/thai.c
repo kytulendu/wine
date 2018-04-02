@@ -32,6 +32,7 @@ WINE_DEFAULT_DEBUG_CHANNEL(user);
 
 /* Thai API */
 static WORD THAI_Interface = 0;         /* Thai API interface flags */
+static BOOL16 THAI_KbdSeqCheck = TRUE;  /* Thai API keyboard sequence check flags */
 
 /***********************************************************************
  *           GetTaskInterface (USER.474)
@@ -297,8 +298,7 @@ SEGPTR WINAPI lstrYearNumber16( WORD nYear, SEGPTR lpDest, WORD nFormat )
  */
 BOOL16 WINAPI IsThaiKbdSeqCheck16(void)
 {
-    FIXME("stub\n");
-    return 0;
+    return THAI_KbdSeqCheck;
 }
 
 
@@ -307,8 +307,8 @@ BOOL16 WINAPI IsThaiKbdSeqCheck16(void)
  */
 BOOL16 WINAPI SetThaiKbdSeqCheck16( BOOL16 fCheck )
 {
-    FIXME("(%04x), stub\n", fCheck);
-    return 0;
+    THAI_KbdSeqCheck = fCheck;
+    return TRUE;
 }
 
 
