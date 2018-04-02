@@ -19,26 +19,28 @@
  */
 
 #include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 
 #include "windef.h"
 #include "winbase.h"
-#include "wingdi.h"
 #include "winuser.h"
-#include "winerror.h"
 #include "wine/winuser16.h"
 #include "wine/debug.h"
 
 WINE_DEFAULT_DEBUG_CHANNEL(keyboard);
+
+/* Thai API */
+static INT16 THAI_KbdLayout = KL_KESMANEE;  /* Thai keyboard layout flags */
 
 /**********************************************************************
  *      SetThaiKbdLayout (KEYBOARD.15)
  */
 VOID WINAPI SetThaiKbdLayout16(INT16 nThaiKbd)
 {
-    FIXME("(%04x) stub\n", nThaiKbd);
+    TRACE("(%04x)\n", nThaiKbd);
+    if ( (nThaiKbd == KL_KESMANEE) || (nThaiKbd == KL_PATTACHOTE) )
+        THAI_KbdLayout = nThaiKbd;
+    else
+        FIXME("invaliad parameter! (%04x)\n", nThaiKbd);
 }
 
 /**********************************************************************
@@ -46,9 +48,8 @@ VOID WINAPI SetThaiKbdLayout16(INT16 nThaiKbd)
  */
 INT16 WINAPI GetThaiKbdLayout16(void)
 {
-    FIXME("stub\n");
-    /* Return Kedmanee keyboard layout */
-    return 0;
+    TRACE("return (%04x)\n", THAI_KbdLayout);
+    return THAI_KbdLayout;
 }
 
 /**********************************************************************

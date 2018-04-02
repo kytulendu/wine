@@ -592,6 +592,11 @@ typedef struct tagCOPYDATASTRUCT16 {
 #define lGetWindowTask(hwnd)  ( (hwnd==0) ? GetCurrentTask() :\
                                 GetWindowTask(hwnd) )
 
+/* Thai keyboard layout flags */
+#define KL_KESMANEE              0
+#define KL_PATTACHOTE            1
+#define KL_CURRENT              -1
+
 /* Date formats */
 #define TS_LONG             0x0004
 #define TS_SHORT            0x000C
