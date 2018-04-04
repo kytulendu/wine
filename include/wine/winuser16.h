@@ -592,6 +592,16 @@ typedef struct tagCOPYDATASTRUCT16 {
 #define lGetWindowTask(hwnd)  ( (hwnd==0) ? GetCurrentTask() :\
                                 GetWindowTask(hwnd) )
 
+/* Message define */
+#define WM_LANGUAGE_NOTIFY  0x0370      /* intended for app */
+#define WM_LANGUAGE_CHANGE  0x0371      /* intended for DefWindowProc */
+
+/* Keyboard language flags */
+#define KB_TOGGLE           0x0002
+#define KB_ENG              0x0000
+#define KB_THAI             0x0001
+#define KB_CHARCHANGE       0x8000
+
 /* Thai keyboard layout flags */
 #define KL_KESMANEE              0
 #define KL_PATTACHOTE            1

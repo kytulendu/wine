@@ -32,6 +32,7 @@ WINE_DEFAULT_DEBUG_CHANNEL(user);
 
 /* Thai API */
 static WORD THAI_Interface = 0;         /* Thai API interface flags */
+static WORD THAI_KeyboardLang = KB_ENG; /* Thai API keyboard language */
 static BOOL16 THAI_KbdSeqCheck = TRUE;  /* Thai API keyboard sequence check flags */
 
 /***********************************************************************
@@ -49,8 +50,7 @@ WORD WINAPI GetTaskInterface16( HTASK16 hTask )
  */
 WORD WINAPI GetKeyboardLanguage16(void)
 {
-    FIXME("stub\n");
-    return 0;
+    return THAI_KeyboardLang;
 }
 
 
@@ -59,8 +59,23 @@ WORD WINAPI GetKeyboardLanguage16(void)
  */
 INT16 WINAPI SetKeyboardLanguage16( INT16 nKey )
 {
-    FIXME("(%d) stub\n", nKey);
-    return 0;
+    INT16 oldKeyb = THAI_KeyboardLang;
+
+    FIXME("(%04x) semi-stub\n", nKey);
+
+    if (nKey == KB_TOGGLE)
+    {
+        if (THAI_KeyboardLang == KB_ENG)
+            THAI_KeyboardLang = KB_THAI;
+        else
+            THAI_KeyboardLang = KB_ENG;
+    }
+    else
+        THAI_KeyboardLang = nKey;
+
+    SendMessage16(GetActiveWindow16(), WM_LANGUAGE_CHANGE, nKey, 0L);
+
+    return oldKeyb;
 }
 
 
@@ -69,7 +84,7 @@ INT16 WINAPI SetKeyboardLanguage16( INT16 nKey )
  */
 WORD WINAPI SetLanguageToggleKey16( INT16 nScan )
 {
-    FIXME("(%d) stub\n", nScan);
+    FIXME("(%04x) stub\n", nScan);
     return 0;
 }
 
