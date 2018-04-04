@@ -40,7 +40,8 @@ VOID WINAPI SetThaiKbdLayout16(INT16 nThaiKbd)
     if ( (nThaiKbd == KL_KESMANEE) || (nThaiKbd == KL_PATTACHOTE) )
         THAI_KbdLayout = nThaiKbd;
     else
-        FIXME("invaliad parameter! (%04x)\n", nThaiKbd);
+        if ( nThaiKbd != KL_CURRENT )
+            FIXME("invaliad parameter! (%04x)\n", nThaiKbd);
 }
 
 /**********************************************************************
