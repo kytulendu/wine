@@ -137,7 +137,7 @@ VOID WINAPI lstrKbdThaiToEng16(SEGPTR lpSrc, SEGPTR lpDest, WORD nCount, INT16 n
 
     while ( (*src != '\0') && (i < nCount) )
     {
-        temp = kbdThaiToEng[kbd][(unsigned int)*src];
+        temp = kbdThaiToEng[kbd][(unsigned char)*src];
 
         if (samePtr)
             *src = temp;
@@ -228,7 +228,7 @@ VOID WINAPI lstrKbdEngToThai16(SEGPTR lpSrc, SEGPTR lpDest, WORD nCount, INT16 n
         }
         else
         {
-            temp = kbdEngToThai[kbd][(unsigned int)*src];
+            temp = kbdEngToThai[kbd][(unsigned char)*src];
 
             if (samePtr)
                 *src = temp;
