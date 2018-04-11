@@ -8,6 +8,7 @@ C_SRCS = \
 	env.c \
 	gdi.c \
 	metafile.c \
-	printdrv.c
+	printdrv.c \
+	thai.c
 
 RC_SRCS = version.rc
