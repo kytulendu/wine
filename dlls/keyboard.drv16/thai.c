@@ -47,7 +47,7 @@ VOID WINAPI SetThaiKbdLayout16(INT16 nThaiKbd)
         THAI_KbdLayout = nThaiKbd;
     else
         if ( nThaiKbd != KL_CURRENT )
-            FIXME("invaliad parameter! (%04x)\n", nThaiKbd);
+            WARN("invaliad parameter! (%04x)\n", nThaiKbd);
 }
 
 /**********************************************************************
