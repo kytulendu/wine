@@ -33,6 +33,12 @@ static INT16 THAI_KbdLayout = KL_KESMANEE;  /* Thai keyboard layout flags */
 
 /**********************************************************************
  *      SetThaiKbdLayout (KEYBOARD.15)
+ *
+ * Set Thai keyboard layout
+ *
+ * PARAMS
+ *    nThaiKbd[I]  Specifies Thai keyboard layout
+ *
  */
 VOID WINAPI SetThaiKbdLayout16(INT16 nThaiKbd)
 {
@@ -46,6 +52,12 @@ VOID WINAPI SetThaiKbdLayout16(INT16 nThaiKbd)
 
 /**********************************************************************
  *      GetThaiKbdLayout (KEYBOARD.16)
+ *
+ * Get current Thai keyboard layout
+ *
+ * RETURNS
+ *    Current Thai keyboard layout
+ *
  */
 INT16 WINAPI GetThaiKbdLayout16(void)
 {
@@ -247,6 +259,18 @@ VOID WINAPI lstrKbdEngToThai16(SEGPTR lpSrc, SEGPTR lpDest, WORD nCount, INT16 n
 
 /**********************************************************************
  *      lstrNumThaiToArabic (KEYBOARD.19)
+ *
+ * Converts Thai numbers in lpSrc for nCount to Arabic numbers and
+ * put it to lpDest
+ *
+ * PARAMS
+ *    lpSrc   [I]  Null-terminated string contain Thai numbers
+ *    lpDest  [O]  Converted Arabic numbers null-terminated string
+ *    nCount  [I]  Specifies number of characters in lpSrc to process
+ *
+ * NOTE
+ *    This function affect only Thai numbers
+ *
  */
 VOID WINAPI lstrNumThaiToArabic16(SEGPTR lpSrc, SEGPTR lpDest, WORD nCount)
 {
@@ -289,6 +313,18 @@ VOID WINAPI lstrNumThaiToArabic16(SEGPTR lpSrc, SEGPTR lpDest, WORD nCount)
 
 /**********************************************************************
  *      lstrNumArabicToThai (KEYBOARD.20)
+ *
+ * Converts Arabic numbers in lpSrc for nCount to Thai numbers and
+ * put it to lpDest
+ *
+ * PARAMS
+ *    lpSrc   [I]  Null-terminated string contain Arabic numbers
+ *    lpDest  [O]  Converted Thai numbers null-terminated string
+ *    nCount  [I]  Specifies number of characters in lpSrc to process
+ *
+ * NOTE
+ *    This function affect only Arabic numbers
+ *
  */
 VOID WINAPI lstrNumArabicToThai16(SEGPTR lpSrc, SEGPTR lpDest, WORD nCount)
 {
