@@ -715,8 +715,9 @@ BOOL16 WINAPI IsThaiKbdSeqCheck16(void)
  */
 BOOL16 WINAPI SetThaiKbdSeqCheck16( BOOL16 fCheck )
 {
+    BOOL16 oldFlag = THAI_KbdSeqCheck;
     THAI_KbdSeqCheck = fCheck;
-    return TRUE;
+    return oldFlag;
 }
 
 
