@@ -28,8 +28,96 @@
 
 WINE_DEFAULT_DEBUG_CHANNEL(keyboard);
 
-/* Thai API */
+/* Thai API variables */
 static INT16 THAI_KbdLayout = KL_KESMANEE;  /* Thai keyboard layout flags */
+static BOOL16 THAI_Status = FALSE;
+
+/**********************************************************************
+ *      TkEnable (KEYBOARD.8)
+ *
+ * Enable Thai keyboard.
+ *
+ * RETURN
+ *    0x30 On both Windows 3.0a and Windows 3.11 Thai Edition
+ *
+ */
+INT16 WINAPI TkEnable16(void)
+{
+    FIXME("stub\n");
+    return 0x30;
+}
+
+/**********************************************************************
+ *      TkDisable (KEYBOARD.9)
+ *
+ * Disable Thai keyboard.
+ *
+ */
+VOID WINAPI TkDisable16(void)
+{
+    FIXME("stub\n");
+}
+
+/**********************************************************************
+ *      IsThaiExist (KEYBOARD.10)
+ *
+ * Check if Thai system is active at the moment.
+ *
+ * RETURN
+ *    TRUE = exist, FALSE = not exist
+ *
+ */
+BOOL16 WINAPI IsThaiExist16(void)
+{
+    return TRUE;
+}
+
+/**********************************************************************
+ *      GetThaiStatus (KEYBOARD.11)
+ *
+ * Get ...
+ *
+ * RETURNS
+ *    ...
+ *
+ */
+BOOL16 WINAPI GetThaiStatus16(void)
+{
+    return THAI_Status;
+}
+
+/**********************************************************************
+ *      SetThaiStatus/NotifyLanguage (KEYBOARD.12)
+ *
+ * SetThaiStatus in Windows 3.0, NotifyLanguage in Windows 3.1
+ *
+ * RETURNS
+ *    ...
+ *
+ */
+BOOL16 WINAPI SetThaiStatus16(BOOL16 bFlag)
+{
+    THAI_Status = bFlag;
+    return TRUE;
+}
+
+/**********************************************************************
+ *      SetCheckSequence (KEYBOARD.13)
+ *
+ * Set if the thai keyboard driver will check for character sequence.
+ *
+ * PARAMS
+ *    bFlag[I]     Specifies checking keyboard input sequence
+ *
+ * RETURNS
+ *    Old flag.
+ *
+ */
+BOOL16 WINAPI SetCheckSequence16(BOOL16 bFlag)
+{
+    FIXME("stub\n");
+    return TRUE;
+}
 
 /**********************************************************************
  *      SetThaiKbdLayout (KEYBOARD.15)
